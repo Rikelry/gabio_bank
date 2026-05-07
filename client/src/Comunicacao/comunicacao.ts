@@ -1,7 +1,4 @@
-
-
 export class ComunicadorClient {
-
     public enviarMsg(msg: string): Promise<string> {
         return new Promise((resolve, reject) => {
             const socket = new WebSocket('ws://localhost:7001');
@@ -22,4 +19,3 @@ export class ComunicadorClient {
         });
     }
 }
-

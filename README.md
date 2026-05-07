@@ -4,8 +4,8 @@
 
 O projeto está dividido em duas partes principais:
 
-- **gabio-client**: Interface web construída com TypeScript e Parcel.
-- **gabio-server**: Servidor WebSocket construído com Node.js e TypeScript.
+- **client**: Interface web construída com TypeScript e Parcel.
+- **server**: Servidor WebSocket construído com Node.js e TypeScript.
 
 ### Protocolo MTP (Fictício)
 
@@ -21,15 +21,15 @@ O MTP define um formato simples para troca de mensagens:
 - Node.js instalado
 - npm ou yarn
 
-### Servidor (`max-server`)
+### Servidor (`server`)
 
-1. Entre na pasta: `cd gabio-server`
+1. Entre na pasta: `cd server`
 2. Instale as dependências: `npm install`
 3. Inicie o servidor: `npm start` (ou `npm run build` seguido de `npm start`)
 
-### Cliente (`max-client`)
+### Cliente (`client`)
 
-1. Entre na pasta: `cd gabio-client`
+1. Entre na pasta: `cd client`
 2. Instale as dependências: `npm install`
 3. Inicie o cliente: `npm start`
 4. Acesse o endereço indicado pelo Parcel (geralmente `http://localhost:1234`)

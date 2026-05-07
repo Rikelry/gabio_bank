@@ -37,5 +37,4 @@ export class ComunicadorServer {
     public setOnRequest(callback: (msg: string) => string) {
         this.onRequestCallback = callback;
     }
-
 }
