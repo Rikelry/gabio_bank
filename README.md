@@ -1,7 +1,5 @@
 # Maximizador - Exemplo de Protocolo sobre WebSockets
 
-Este projeto é um exemplo didático desenvolvido para as aulas de **Redes de Computadores**. O objetivo é demonstrar a implementação de um protocolo fictício de camada de aplicação (**MTP - Maximization Transfer Protocol**) utilizando **WebSockets** para comunicação bidirecional entre cliente e servidor.
-
 ## Estrutura do Projeto
 
 O projeto está dividido em duas partes principais:
