@@ -34,8 +34,8 @@ Todas as requisições e respostas possuem o mesmo conjunto de campos, garantind
 | Campo          | Descrição                                         |
 |----------------|---------------------------------------------------|
 | OPERATION      | Tipo de operação: BALANCE, DEPOSIT, WITHDRAW, TRANSFER. |
-| ACCOUNTID      | Identificador da conta principal.                 |
-| TOACCOUNTID    | Identificador da conta de destino (apenas TRANSFER; caso contrário, vazio). |
+| ACCOUNT_ID      | Identificador da conta principal.                 |
+| TO_ACCOUNT_ID    | Identificador da conta de destino (apenas TRANSFER; caso contrário, vazio). |
 | VALUE          | Valor numérico da transação (usado em todas as operações; pode ser 0 para BALANCE). |
 
 ### 1.2 Formato Comum de Resposta
