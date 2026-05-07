@@ -12,18 +12,17 @@ O objetivo desta atividade é consolidar os conceitos de protocolos da camada de
 por meio do desenvolvimento de uma aplicação cliente–servidor simplificada. Os alunos
 irão:
 
-- Implementar um cliente web (frontend) em TypeScript/HTML que consuma um
-    protocolo personalizado;
+- Implementar um cliente web (frontend) em TypeScript/HTML que consuma um protocolo personalizado;
 - Implementar um servidor em Node.js/TypeScript que entenda e processe as mensagens do protocolo;
 - Definir e documentar o protocolo de aplicação GBTP (Gábio Bank Transaction Protocol);
 - Testar as operações de consulta de saldo, depósito, saque e transferência entre contas.
 
 ## Descrição Geral do Projeto
-
-/gabio-client % Cliente web (HTML + TypeScript)
-/gabio-server % Servidor Node.js + TypeScript
-README.md % Documentação do projeto e do protocolo
-
+```text
+/gabio-client   % Cliente web (HTML + TypeScript)
+/gabio-server   % Servidor Node.js + TypeScript
+README.md       % Documentação do projeto e do protocolo
+```
 ## 1 Protocolo GBTP
 
 O GBTP (Gábio Bank Transaction Protocol) é um protocolo textual inspirado no CNET,
