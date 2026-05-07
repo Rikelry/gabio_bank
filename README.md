@@ -1,11 +1,11 @@
-# Maximizador - Exemplo de Protocolo sobre WebSockets
+# Gábio Bank - Exemplo de Protocolo sobre WebSockets
 
 ## Estrutura do Projeto
 
 O projeto está dividido em duas partes principais:
 
-- **max-client**: Interface web construída com TypeScript e Parcel.
-- **max-server**: Servidor WebSocket construído com Node.js e TypeScript.
+- **gabio-client**: Interface web construída com TypeScript e Parcel.
+- **gabio-server**: Servidor WebSocket construído com Node.js e TypeScript.
 
 ### Protocolo MTP (Fictício)
 
@@ -23,13 +23,13 @@ O MTP define um formato simples para troca de mensagens:
 
 ### Servidor (`max-server`)
 
-1. Entre na pasta: `cd max-server`
+1. Entre na pasta: `cd gabio-server`
 2. Instale as dependências: `npm install`
 3. Inicie o servidor: `npm start` (ou `npm run build` seguido de `npm start`)
 
 ### Cliente (`max-client`)
 
-1. Entre na pasta: `cd max-client`
+1. Entre na pasta: `cd gabio-client`
 2. Instale as dependências: `npm install`
 3. Inicie o cliente: `npm start`
 4. Acesse o endereço indicado pelo Parcel (geralmente `http://localhost:1234`)
