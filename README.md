@@ -41,3 +41,9 @@ Este código serve como base para estudos sobre:
 - Definição de protocolos de aplicação.
 - Comunicação assíncrona com WebSockets.
 - Estruturação de projetos Fullstack com TypeScript.
+
+- <a href="https://github.com/Rikelry/maximizador/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Rikelry/maximizador" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
