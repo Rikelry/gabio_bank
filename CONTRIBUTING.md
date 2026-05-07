@@ -4,7 +4,7 @@
 
 ### Disciplina de Redes de Computadores
 
-### 19 de maio de 2025
+### 20 de maio de 2025
 
 ## Objetivo
 
