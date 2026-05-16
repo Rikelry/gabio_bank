@@ -44,8 +44,8 @@ Este código serve como base para estudos sobre:
 
 ## Contributors
 
-<a href="https://github.com/Rikelry/maximizador/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Rikelry/maximizador" />
+<a href="https://github.com/Rikelry/gabio_bank/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Rikelry/gabio_bank" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
