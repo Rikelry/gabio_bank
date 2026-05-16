@@ -88,4 +88,34 @@ export class GBTPResponse {
             BALANCE:${this.balance.toFixed(2)}
         ].join('\n');
     }
+
+    static fromString(msg: string): GBTPResponse {
+    const lines = msg.trim().split('\n');
+    const fields: Record<string, string> = {};
+
+    for (const line of lines) {
+        const idx = line.indexOf(':');
+
+        if (idx === -1) {
+            throw new Error(Campo inválido: "${line}");
+        }
+
+        fields[line.substring(0, idx).trim()] =
+            line.substring(idx + 1).trim();
+    }
+
+    const required = ['STATUS', 'MESSAGE', 'BALANCE'];
+
+    for (const r of required) {
+        if (!(r in fields)) {
+            throw new Error(Campo ausente na resposta: ${r});
+        }
+    }
+
+    return new GBTPResponse(
+        fields['STATUS'] as 'OK' | 'ERROR',
+        fields['MESSAGE'],
+        parseFloat(fields['BALANCE'])
+    );
+}
 }
