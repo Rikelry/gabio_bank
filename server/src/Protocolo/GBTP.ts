@@ -16,9 +16,7 @@ export class GBTPRequest {
             VALUE:${this.value}
         ].join('\n');
     }
-}
-
-static fromString(msg: string): GBTPRequest {
+    static fromString(msg: string): GBTPRequest {
     const lines = msg.trim().split('\n');
     const fields: Record<string, string> = {};
 
@@ -73,4 +71,21 @@ static fromString(msg: string): GBTPRequest {
         fields['TO_ACCOUNT_ID'],
         value
     );
+   }
+}
+
+export class GBTPResponse {
+    constructor(
+        public status: 'OK' | 'ERROR',
+        public message: string,
+        public balance: number
+    ) {}
+
+    toString(): string {
+        return [
+            STATUS:${this.status},
+            MESSAGE:${this.message},
+            BALANCE:${this.balance.toFixed(2)}
+        ].join('\n');
+    }
 }
