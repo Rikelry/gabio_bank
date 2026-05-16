@@ -10,68 +10,41 @@ export class GBTPRequest {
 
     toString(): string {
         return [
-            OPERATION:${this.operation},
-            ACCOUNT_ID:${this.accountId},
-            TO_ACCOUNT_ID:${this.toAccountId},
-            VALUE:${this.value}
+            `OPERATION:${this.operation}`,
+            `ACCOUNT_ID:${this.accountId}`,
+            `TO_ACCOUNT_ID:${this.toAccountId}`,
+            `VALUE:${this.value}`
         ].join('\n');
     }
+
     static fromString(msg: string): GBTPRequest {
-    const lines = msg.trim().split('\n');
-    const fields: Record<string, string> = {};
+        const lines = msg.trim().split('\n');
+        const fields: Record<string, string> = {};
 
-    for (const line of lines) {
-        const idx = line.indexOf(':');
-
-        if (idx === -1) {
-            throw new Error(Campo inválido: "${line}");
+        for (const line of lines) {
+            const idx = line.indexOf(':');
+            if (idx === -1) throw new Error(`Campo inválido: "${line}"`);
+            const key = line.substring(0, idx).trim();
+            const val = line.substring(idx + 1).trim();
+            fields[key] = val;
         }
 
-        const key = line.substring(0, idx).trim();
-        const val = line.substring(idx + 1).trim();
-
-        fields[key] = val;
-    }
-
-    const required = [
-        'OPERATION',
-        'ACCOUNT_ID',
-        'TO_ACCOUNT_ID',
-        'VALUE'
-    ];
-
-    for (const r of required) {
-        if (!(r in fields)) {
-            throw new Error(Campo obrigatório ausente: ${r});
+        const required = ['OPERATION', 'ACCOUNT_ID', 'TO_ACCOUNT_ID', 'VALUE'];
+        for (const r of required) {
+            if (!(r in fields)) throw new Error(`Campo obrigatório ausente: ${r}`);
         }
+
+        const validOps: OperationType[] = ['BALANCE', 'DEPOSIT', 'WITHDRAW', 'TRANSFER'];
+        const op = fields['OPERATION'] as OperationType;
+        if (!validOps.includes(op)) {
+            throw new Error(`Operação inválida: ${fields['OPERATION']}`);
+        }
+
+        const value = parseFloat(fields['VALUE']);
+        if (isNaN(value)) throw new Error('VALUE deve ser um número');
+
+        return new GBTPRequest(op, fields['ACCOUNT_ID'], fields['TO_ACCOUNT_ID'], value);
     }
-
-    const validOps: OperationType[] = [
-        'BALANCE',
-        'DEPOSIT',
-        'WITHDRAW',
-        'TRANSFER'
-    ];
-
-    const op = fields['OPERATION'] as OperationType;
-
-    if (!validOps.includes(op)) {
-        throw new Error(Operação inválida: ${fields['OPERATION']});
-    }
-
-    const value = parseFloat(fields['VALUE']);
-
-    if (isNaN(value)) {
-        throw new Error('VALUE deve ser um número');
-    }
-
-    return new GBTPRequest(
-        op,
-        fields['ACCOUNT_ID'],
-        fields['TO_ACCOUNT_ID'],
-        value
-    );
-   }
 }
 
 export class GBTPResponse {
@@ -83,39 +56,31 @@ export class GBTPResponse {
 
     toString(): string {
         return [
-            STATUS:${this.status},
-            MESSAGE:${this.message},
-            BALANCE:${this.balance.toFixed(2)}
+            `STATUS:${this.status}`,
+            `MESSAGE:${this.message}`,
+            `BALANCE:${this.balance.toFixed(2)}`
         ].join('\n');
     }
 
     static fromString(msg: string): GBTPResponse {
-    const lines = msg.trim().split('\n');
-    const fields: Record<string, string> = {};
+        const lines = msg.trim().split('\n');
+        const fields: Record<string, string> = {};
 
-    for (const line of lines) {
-        const idx = line.indexOf(':');
-
-        if (idx === -1) {
-            throw new Error(Campo inválido: "${line}");
+        for (const line of lines) {
+            const idx = line.indexOf(':');
+            if (idx === -1) throw new Error(`Campo inválido: "${line}"`);
+            fields[line.substring(0, idx).trim()] = line.substring(idx + 1).trim();
         }
 
-        fields[line.substring(0, idx).trim()] =
-            line.substring(idx + 1).trim();
-    }
-
-    const required = ['STATUS', 'MESSAGE', 'BALANCE'];
-
-    for (const r of required) {
-        if (!(r in fields)) {
-            throw new Error(Campo ausente na resposta: ${r});
+        const required = ['STATUS', 'MESSAGE', 'BALANCE'];
+        for (const r of required) {
+            if (!(r in fields)) throw new Error(`Campo ausente na resposta: ${r}`);
         }
-    }
 
-    return new GBTPResponse(
-        fields['STATUS'] as 'OK' | 'ERROR',
-        fields['MESSAGE'],
-        parseFloat(fields['BALANCE'])
-    );
-}
+        return new GBTPResponse(
+            fields['STATUS'] as 'OK' | 'ERROR',
+            fields['MESSAGE'],
+            parseFloat(fields['BALANCE'])
+        );
+    }
 }
