@@ -52,4 +52,13 @@ private consultarSaldo(req: GBTPRequest): GBTPResponse {
     const saldo = this.contas.get(req.accountId)!;
     return new GBTPResponse('OK', 'Saldo consultado com sucesso', saldo);
 }
+private depositar(req: GBTPRequest): GBTPResponse {
+    if (req.value === 0) throw new Error('Valor do depósito deve ser maior que zero');
+
+    const saldoAtual = this.contas.get(req.accountId)!;
+    const novoSaldo = saldoAtual + req.value;
+    this.contas.set(req.accountId, novoSaldo);
+
+    return new GBTPResponse('OK', 'Depósito realizado com sucesso', novoSaldo);
+}
 }
