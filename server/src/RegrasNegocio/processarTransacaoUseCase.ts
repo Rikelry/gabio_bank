@@ -37,4 +37,15 @@ export class ProcessarTransacaoUseCase {
             case 'TRANSFER': return this.transferir(req);
         }
     }
+    private validarCamposComuns(req: GBTPRequest): void {
+    if (!req.accountId || req.accountId.trim() === '') {
+        throw new Error('ACCOUNT_ID não pode ser vazio');
+    }
+    if (!this.contas.has(req.accountId)) {
+        throw new Error(`Conta de origem não encontrada: ${req.accountId}`);
+    }
+    if (req.value < 0) {
+        throw new Error('VALUE não pode ser negativo');
+    }
+}
 }
