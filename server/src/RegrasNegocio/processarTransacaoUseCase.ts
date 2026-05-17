@@ -48,4 +48,8 @@ export class ProcessarTransacaoUseCase {
         throw new Error('VALUE não pode ser negativo');
     }
 }
+private consultarSaldo(req: GBTPRequest): GBTPResponse {
+    const saldo = this.contas.get(req.accountId)!;
+    return new GBTPResponse('OK', 'Saldo consultado com sucesso', saldo);
+}
 }
