@@ -1,51 +1,60 @@
-# Gábio Bank - Exemplo de Protocolo sobre WebSockets
+# Atividade de Redes de Computadores
 
-## Estrutura do Projeto
+### Gábio Bank: Implementação do Protocolo GBTP
 
-O projeto está dividido em duas partes principais:
+### Disciplina de Redes de Computadores
 
-- **client**: Interface web construída com TypeScript e Parcel.
-- **server**: Servidor WebSocket construído com Node.js e TypeScript.
+### 20 de maio de 2025
 
-### Protocolo MTP (Fictício)
+---
 
-O MTP define um formato simples para troca de mensagens:
-
-- **Request**: `MENSAGEM:<texto>`
-- **Response**: `CODIGO:<OK|ERROR>\nMENSAGEM:<texto>`
-
-## Como Executar
+## Instruções de Execução
 
 ### Pré-requisitos
 
 - Node.js instalado
-- npm ou yarn
+- npm instalado
 
-### Servidor (`server`)
+---
 
-1. Entre na pasta: `cd server`
-2. Instale as dependências: `npm install`
-3. Inicie o servidor: `npm start` (ou `npm run build` seguido de `npm start`)
+## 1. Executando o Servidor (WebSocket - GBTP)
 
-### Cliente (`client`)
+Acesse a pasta do servidor:
 
-1. Entre na pasta: `cd client`
-2. Instale as dependências: `npm install`
-3. Inicie o cliente: `npm start`
-4. Acesse o endereço indicado pelo Parcel (geralmente `http://localhost:1234`)
+> cd server
 
-## Fins Pedagógicos
+Instale as dependências:
 
-Este código serve como base para estudos sobre:
-- Encapsulamento de dados.
-- Definição de protocolos de aplicação.
-- Comunicação assíncrona com WebSockets.
-- Estruturação de projetos Fullstack com TypeScript.
+> npm install
 
-## Contributors
+Compile o projeto TypeScript:
 
-<a href="https://github.com/Rikelry/gabio_bank/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Rikelry/gabio_bank" />
-</a>
+> npm run build
 
-Made with [contrib.rocks](https://contrib.rocks).
+Inicie o servidor:
+
+> npm start
+
+O servidor WebSocket será iniciado na porta: ``7001``
+
+---
+
+## 2. Executando o Cliente (Frontend Web)
+
+Acesse a pasta do cliente:
+
+> cd client
+
+Instale as dependências:
+
+> npm install
+
+Inicie o cliente com Parcel:
+
+> npm start
+
+O frontend ficará disponível em:
+
+> http://localhost:1234
+
+---
