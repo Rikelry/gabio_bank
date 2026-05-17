@@ -53,9 +53,7 @@ Inicie o cliente com Parcel:
 
 > npm start
 
-O frontend ficará disponível em:
-
-> http://localhost:1234
+O frontend ficará disponível em: http://localhost:1234
 
 ---
 
