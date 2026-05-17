@@ -74,4 +74,28 @@ private sacar(req: GBTPRequest): GBTPResponse {
 
     return new GBTPResponse('OK', 'Saque efetuado com sucesso', novoSaldo);
 }
+private transferir(req: GBTPRequest): GBTPResponse {
+    if (!req.toAccountId || req.toAccountId.trim() === '') {
+        throw new Error('TO_ACCOUNT_ID é obrigatório para transferências');
+    }
+    if (req.accountId === req.toAccountId) {
+        throw new Error('Conta de origem e destino não podem ser iguais');
+    }
+    if (!this.contas.has(req.toAccountId)) {
+        const saldo = this.contas.get(req.accountId)!;
+        return new GBTPResponse('ERROR', 'Conta de destino inexistente', saldo);
+    }
+    if (req.value === 0) throw new Error('Valor da transferência deve ser maior que zero');
+
+    const saldoOrigem = this.contas.get(req.accountId)!;
+    if (req.value > saldoOrigem) {
+        return new GBTPResponse('ERROR', 'Saldo insuficiente para transferência', saldoOrigem);
+    }
+
+    const saldoDestino = this.contas.get(req.toAccountId)!;
+    this.contas.set(req.accountId, saldoOrigem - req.value);
+    this.contas.set(req.toAccountId, saldoDestino + req.value);
+
+    return new GBTPResponse('OK', 'Transferência concluída com sucesso', saldoOrigem - req.value);
+}
 }
