@@ -61,4 +61,17 @@ private depositar(req: GBTPRequest): GBTPResponse {
 
     return new GBTPResponse('OK', 'Depósito realizado com sucesso', novoSaldo);
 }
+private sacar(req: GBTPRequest): GBTPResponse {
+    if (req.value === 0) throw new Error('Valor do saque deve ser maior que zero');
+
+    const saldoAtual = this.contas.get(req.accountId)!;
+    if (req.value > saldoAtual) {
+        return new GBTPResponse('ERROR', 'Saldo insuficiente', saldoAtual);
+    }
+
+    const novoSaldo = saldoAtual - req.value;
+    this.contas.set(req.accountId, novoSaldo);
+
+    return new GBTPResponse('OK', 'Saque efetuado com sucesso', novoSaldo);
+}
 }
