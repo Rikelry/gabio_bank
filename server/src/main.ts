@@ -1,7 +1,8 @@
-import { ComunicadorServer } from "./Comunicacao/comunicadorServer";
-import { ProcessarMaximizacaoUseCase } from "./RegrasNegocio/processarMaximizacaoUseCase";
+import { ComunicadorServer } from './Comunicacao/comunicadorServer';
+import { ProcessarTransacaoUseCase } from './RegrasNegocio/processarTransacaoUseCase';
 
-let comunicador: ComunicadorServer = new ComunicadorServer();
-let processador: ProcessarMaximizacaoUseCase = new ProcessarMaximizacaoUseCase();
-comunicador.setOnRequest(processador.processar);
+const comunicador = new ComunicadorServer();
+const processador = new ProcessarTransacaoUseCase();
+
+comunicador.setOnRequest((msg: string) => processador.processar(msg));
 comunicador.startServer(7001);
