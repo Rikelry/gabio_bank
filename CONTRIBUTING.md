@@ -51,75 +51,75 @@ Todas as requisições e respostas possuem o mesmo conjunto de campos, garantind
 ### 2.1 Consulta de Saldo (BALANCE)
 
 Requisição:
-```
-OPERATION:BALANCE
-ACCOUNT_ID:1234
-TO_ACCOUNT_ID:
-VALUE:0
-```
+
+    OPERATION:BALANCE
+    ACCOUNT_ID:1234
+    TO_ACCOUNT_ID:
+    VALUE:0
+
 Resposta:
-```
-STATUS:OK
-MESSAGE:Saldo consultado com sucesso
-BALANCE:250.00
-```
+
+    STATUS:OK
+    MESSAGE:Saldo consultado com sucesso
+    BALANCE:250.00
+
 ### 2.2 Depósito (DEPOSIT)
 
 Requisição:
-```
-OPERATION:DEPOSIT
-ACCOUNT_ID:1234
-TO_ACCOUNT_ID:
-VALUE:100.00
-```
+
+    OPERATION:DEPOSIT
+    ACCOUNT_ID:1234
+    TO_ACCOUNT_ID:
+    VALUE:100.00
+
 Resposta:
-```
-STATUS:OK
-MESSAGE:Depósito realizado com sucesso
-BALANCE:350.00
-```
+
+    STATUS:OK
+    MESSAGE:Depósito realizado com sucesso
+    BALANCE:350.00
+
 ### 2.3 Saque (WITHDRAW)
 
 Requisição:
-```
-OPERATION:WITHDRAW
-ACCOUNT_ID:1234
-TO_ACCOUNT_ID:
-VALUE:50.00
-```
+
+    OPERATION:WITHDRAW
+    ACCOUNT_ID:1234
+    TO_ACCOUNT_ID:
+    VALUE:50.00
+
 Resposta (sucesso):
-```
-STATUS:OK
-MESSAGE:Saque efetuado
-BALANCE:300.00
-```
+
+    STATUS:OK
+    MESSAGE:Saque efetuado
+    BALANCE:300.00
+
 Resposta (erro - saldo insuficiente):
-```
-STATUS:ERROR
-MESSAGE:Saldo insuficiente
-BALANCE:30.00
-```
+
+    STATUS:ERROR
+    MESSAGE:Saldo insuficiente
+    BALANCE:30.00
+
 ### 2.4 Transferência (TRANSFER)
 
 Requisição:
-```
-OPERATION:TRANSFER
-ACCOUNT_ID:1234
-TO_ACCOUNT_ID:5678
-VALUE:75.00
-```
+
+    OPERATION:TRANSFER
+    ACCOUNT_ID:1234
+    TO_ACCOUNT_ID:5678
+    VALUE:75.00
+
 Resposta (sucesso):
-```
-STATUS:OK
-MESSAGE:Transferência concluída
-BALANCE:225.00
-```
+
+    STATUS:OK
+    MESSAGE:Transferência concluída
+    BALANCE:225.00
+
 Resposta (erro - conta destino não existe):
-```
-STATUS:ERROR
-MESSAGE:Conta de destino inexistente
-BALANCE:225.00
-```
+
+    STATUS:ERROR
+    MESSAGE:Conta de destino inexistente
+    BALANCE:225.00
+
 ## 3 Requisitos de Implementação
 
 - Cliente Web: React + TypeScript; interface simples para enviar mensagens GBTP via WebSocket e exibir respostas.
